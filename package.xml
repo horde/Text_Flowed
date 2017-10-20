@@ -11,7 +11,7 @@
   <email>slusarz@horde.org</email>
   <active>yes</active>
  </lead>
- <date>2017-10-17</date>
+ <date>2017-10-20</date>
  <version>
   <release>2.0.4</release>
   <api>1.0.0</api>
@@ -40,7 +40,6 @@
        <file name="AllTests.php" role="test" />
        <file name="bootstrap.php" role="test" />
        <file name="FlowedTest.php" role="test" />
-       <file name="phpunit.xml" role="test" />
       </dir> <!-- /test/Horde/Text/Flowed -->
      </dir> <!-- /test/Horde/Text -->
     </dir> <!-- /test/Horde -->
@@ -83,7 +82,6 @@
    <install as="Horde/Text/Flowed/AllTests.php" name="test/Horde/Text/Flowed/AllTests.php" />
    <install as="Horde/Text/Flowed/bootstrap.php" name="test/Horde/Text/Flowed/bootstrap.php" />
    <install as="Horde/Text/Flowed/FlowedTest.php" name="test/Horde/Text/Flowed/FlowedTest.php" />
-   <install as="Horde/Text/Flowed/phpunit.xml" name="test/Horde/Text/Flowed/phpunit.xml" />
   </filelist>
  </phprelease>
  <changelog>
@@ -291,7 +289,7 @@ Converted to package.xml 2.0 for pear.horde.org
    <stability>
     <release>stable</release>
     <api>stable</api></stability>
-   <date>2017-10-17</date>
+   <date>2017-10-20</date>
    <license uri="http://www.horde.org/licenses/lgpl21">LGPL-2.1</license>
    <notes>
 * 
