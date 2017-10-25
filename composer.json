@@ -1,5 +1,5 @@
 {
-    "name": "horde/horde-text-flowed",
+    "name": "horde/text-flowed",
     "description": "Horde API for flowed text as per RFC 3676",
     "type": "library",
     "homepage": "https://pear.horde.org",
@@ -12,7 +12,7 @@
         }
     ],
     "version": "2.0.4",
-    "time": "2016-02-02",
+    "time": "2017-10-20",
     "repositories": [
         {
             "type": "pear",
@@ -21,10 +21,10 @@
     ],
     "require": {
         "php": "^5.3 || ^7",
-        "pear-pear.horde.org/Horde_Util": "^2@stable"
+        "pear-pear.horde.org/Horde_Util": "^2"
     },
     "suggest": {
-        "pear-pear.horde.org/Horde_Test": "^2.1@stable"
+        "pear-pear.horde.org/Horde_Test": "^2.1"
     },
     "replace": {
         "pear-pear.horde.org/Horde_Text_Flowed": "2.*",
