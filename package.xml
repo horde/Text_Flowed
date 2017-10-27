@@ -107,7 +107,7 @@
    <date>2004-10-15</date>
    <license uri="http://www.horde.org/licenses/lgpl21">LGPL-2.1</license>
    <notes>
-Initial release as a PEAR package
+* Initial release as a PEAR package
    </notes>
   </release>
   <release>
@@ -123,7 +123,7 @@ Initial release as a PEAR package
    </stability>
    <license uri="http://www.horde.org/licenses/lgpl21">LGPL-2.1</license>
    <notes>
-Converted to package.xml 2.0 for pear.horde.org
+* Converted to package.xml 2.0 for pear.horde.org
    </notes>
   </release>
   <release>
