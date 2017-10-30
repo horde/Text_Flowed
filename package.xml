@@ -11,7 +11,7 @@
   <email>slusarz@horde.org</email>
   <active>yes</active>
  </lead>
- <date>2016-02-02</date>
+ <date>2017-10-30</date>
  <version>
   <release>2.0.4</release>
   <api>1.0.0</api>
@@ -30,6 +30,7 @@
     <dir name="Horde">
      <dir name="Text">
       <dir name="Flowed">
+       <file name="CHANGES" role="doc" />
        <file name="COPYING" role="doc" />
       </dir> <!-- /doc/Horde/Text/Flowed -->
      </dir> <!-- /doc/Horde/Text -->
@@ -86,6 +87,7 @@
  </dependencies>
  <phprelease>
   <filelist>
+   <install as="CHANGES" name="doc/Horde/Text/Flowed/CHANGES" />
    <install as="COPYING" name="doc/Horde/Text/Flowed/COPYING" />
    <install as="Horde/Text/Flowed.php" name="lib/Horde/Text/Flowed.php" />
    <install as="Horde/Text/Flowed/AllTests.php" name="test/Horde/Text/Flowed/AllTests.php" />
@@ -299,7 +301,7 @@
    <stability>
     <release>stable</release>
     <api>stable</api></stability>
-   <date>2016-02-02</date>
+   <date>2017-10-30</date>
    <license uri="http://www.horde.org/licenses/lgpl21">LGPL-2.1</license>
    <notes>
 * 
