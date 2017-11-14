@@ -51,7 +51,6 @@
        <file name="AllTests.php" role="test" />
        <file name="bootstrap.php" role="test" />
        <file name="FlowedTest.php" role="test" />
-       <file name="phpunit.xml" role="test" />
       </dir> <!-- /test/Horde/Text/Flowed -->
      </dir> <!-- /test/Horde/Text -->
     </dir> <!-- /test/Horde -->
@@ -94,8 +93,7 @@
    <install as="Horde/Text/Flowed/AllTests.php" name="test/Horde/Text/Flowed/AllTests.php" />
    <install as="Horde/Text/Flowed/bootstrap.php" name="test/Horde/Text/Flowed/bootstrap.php" />
    <install as="Horde/Text/Flowed/FlowedTest.php" name="test/Horde/Text/Flowed/FlowedTest.php" />
-   <install as="Horde/Text/Flowed/phpunit.xml" name="test/Horde/Text/Flowed/phpunit.xml" />
-  </filelist>
+   </filelist>
  </phprelease>
  <changelog>
   <release>
