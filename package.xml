@@ -3,15 +3,16 @@
  <name>Horde_Text_Flowed</name>
  <channel>pear.horde.org</channel>
  <extends>Text_Flowed</extends>
- <summary>Horde API for flowed text as per RFC 3676</summary>
- <description>The Horde_Text_Flowed:: class provides common methods for manipulating text using the encoding described in RFC 3676 (&apos;flowed&apos; text).</description>
+ <summary>Flowed text library</summary>
+ <description>The Horde_Text_Flowed:: class provides common methods for manipulating text using the encoding described in RFC 3676 (&apos;flowed&apos; text).
+</description>
  <lead>
   <name>Michael Slusarz</name>
   <user>slusarz</user>
   <email>slusarz@horde.org</email>
-  <active>yes</active>
+  <active>no</active>
  </lead>
- <date>2017-10-30</date>
+ <date>2017-11-14</date>
  <version>
   <release>2.0.4</release>
   <api>1.0.0</api>
@@ -301,7 +302,7 @@
    <stability>
     <release>stable</release>
     <api>stable</api></stability>
-   <date>2017-10-30</date>
+   <date>2017-11-14</date>
    <license uri="http://www.horde.org/licenses/lgpl21">LGPL-2.1</license>
    <notes>
 * 
