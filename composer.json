@@ -27,8 +27,8 @@
         "pear-pear.horde.org/Horde_Test": "^2.1"
     },
     "replace": {
-        "pear-pear.horde.org/Horde_Text_Flowed": "2.*",
-        "pear-horde/Horde_Text_Flowed": "2.*"
+        "pear-pear.horde.org/Horde_Text_Flowed": "self.version",
+        "pear-horde/Horde_Text_Flowed": "self.version"
     },
     "autoload": {
         "psr-0": {
