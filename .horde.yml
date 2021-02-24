@@ -2,9 +2,8 @@
 id: Text_Flowed
 name: Text_Flowed
 full: Flowed text library
-description: >
-  A library that provides common methods for manipulating text using the
-  encoding described in RFC 3676 ('flowed' text).
+description: |
+  A library that provides common methods for manipulating text using the encoding described in RFC 3676 ('flowed' text).
 list: dev
 type: library
 homepage: https://www.horde.org/libraries/Horde_Text_Flowed
@@ -16,11 +15,11 @@ authors:
     active: false
     role: lead
 version:
-  release: 2.0.5
-  api: 1.0.0
+  release: 3.0.0alpha1
+  api: 3.0.0alpha1
 state:
-  release: stable
-  api: stable
+  release: alpha
+  api: alpha
 license:
   identifier: LGPL-2.1
   uri: http://www.horde.org/licenses/lgpl21
