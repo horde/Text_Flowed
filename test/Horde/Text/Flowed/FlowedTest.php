@@ -8,8 +8,12 @@
  * @package    Text_Flowed
  * @subpackage UnitTests
  */
+namespace Horde\Text;
+use \Flowed;
+use PHPUnit\Framework\TestCase;
+use \Horde_Text_Flowed;
 
-class Horde_Text_Flowed_FlowedTest extends PHPUnit_Framework_TestCase
+class FlowedTest extends TestCase
 {
     public function testFixedToFlowed()
     {
