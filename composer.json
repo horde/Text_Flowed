@@ -4,7 +4,7 @@
     "description": "Flowed text library",
     "type": "library",
     "homepage": "https://www.horde.org/libraries/Horde_Text_Flowed",
-    "license": "LGPL-2.1",
+    "license": "LGPL-2.1-only",
     "authors": [
         {
             "name": "Michael Slusarz",
@@ -20,7 +20,7 @@
         }
     ],
     "require": {
-        "php": "^7",
+        "php": "^7.4 || ^8",
         "horde/util": "^3 || dev-FRAMEWORK_6_0"
     },
     "suggest": {
