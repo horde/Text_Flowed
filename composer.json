@@ -1,5 +1,5 @@
 {
-    "name": "horde/text-flowed",
+    "name": "bytestream/horde-text-flowed",
     "description": "Flowed text library",
     "type": "library",
     "homepage": "https://www.horde.org/libraries/Horde_Text_Flowed",
@@ -11,28 +11,21 @@
             "role": "lead"
         }
     ],
-    "version": "2.0.4",
-    "time": "2019-12-15",
-    "repositories": [
-        {
-            "type": "pear",
-            "url": "https://pear.horde.org"
-        }
-    ],
     "require": {
-        "php": "^5.3 || ^7",
-        "pear-pear.horde.org/Horde_Util": "^2"
+        "php": "^7.4 || ^8.0",
+        "bytestream/horde-util": "^2"
     },
-    "suggest": {
-        "pear-pear.horde.org/Horde_Test": "^2.1"
-    },
-    "replace": {
-        "pear-pear.horde.org/Horde_Text_Flowed": "2.*",
-        "pear-horde/Horde_Text_Flowed": "2.*"
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
     },
     "autoload": {
         "psr-0": {
             "Horde_Text_Flowed": "lib/"
+        }
+    },
+    "autoload-dev": {
+        "psr-0": {
+            "Horde_Text_Flowed": "test/"
         }
     }
 }
