@@ -9,7 +9,7 @@
  * @subpackage UnitTests
  */
 
-class Horde_Text_Flowed_FlowedTest extends PHPUnit_Framework_TestCase
+class Horde_Text_Flowed_FlowedTest extends Horde_Test_Case
 {
     public function testFixedToFlowed()
     {
