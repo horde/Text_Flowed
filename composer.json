@@ -14,21 +14,15 @@
     "version": "2.0.4",
     "time": "2019-12-15",
     "repositories": [
-        {
-            "type": "pear",
-            "url": "https://pear.horde.org"
-        }
     ],
     "require": {
         "php": "^5.3 || ^7",
-        "pear-pear.horde.org/Horde_Util": "^2"
+        "horde/util": "^2"
     },
-    "suggest": {
-        "pear-pear.horde.org/Horde_Test": "^2.1"
+    "require-dev": {
+        "horde/test": "^2.1"
     },
     "replace": {
-        "pear-pear.horde.org/Horde_Text_Flowed": "2.*",
-        "pear-horde/Horde_Text_Flowed": "2.*"
     },
     "autoload": {
         "psr-0": {
