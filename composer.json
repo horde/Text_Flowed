@@ -15,7 +15,7 @@
     "repositories": [],
     "require": {
         "php": "^7.4 || ^8",
-        "horde/util": "^3"
+        "horde/util": "^3 || dev-FRAMEWORK_6_0"
     },
     "require-dev": {},
     "suggest": {},
@@ -35,8 +35,6 @@
     "config": {
         "allow-plugins": {}
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "extra": {
         "branch-alias": {
             "dev-FRAMEWORK_6_0": "3.x-dev"
