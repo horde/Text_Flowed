@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The Text_Flowed:: class provides common methods for manipulating text
  * using the encoding described in RFC 3676 ('flowed' text).
@@ -7,8 +8,8 @@
  * in the CPAN perl repository.  This module is released under the Perl
  * license, which is compatible with the LGPL.
  *
- * Copyright 2002-2003 Philip Mak
- * Copyright 2004-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2002-2026 Philip Mak
+ * Copyright 2004-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you
  * did not receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -18,6 +19,9 @@
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
  * @package  Text_Flowed
  */
+
+use Horde\Util\HordeString;
+
 class Horde_Text_Flowed
 {
     /**
@@ -49,7 +53,7 @@ class Horde_Text_Flowed
      *
      * @var array
      */
-    protected $_output = array();
+    protected $_output = [];
 
     /**
      * The format of the data in $_output.
@@ -111,7 +115,7 @@ class Horde_Text_Flowed
      */
     public function setDelSp($delsp)
     {
-        $this->_delsp = (bool)$delsp;
+        $this->_delsp = (bool) $delsp;
     }
 
     /**
@@ -166,7 +170,7 @@ class Horde_Text_Flowed
      *
      * @return string  The text converted to RFC 2646 'flowed' format.
      */
-    public function toFlowed($quote = false, array $opts = array())
+    public function toFlowed($quote = false, array $opts = [])
     {
         $txt = '';
 
@@ -188,12 +192,12 @@ class Horde_Text_Flowed
      */
     protected function _reformat($toflowed, $quote, $wrap = true)
     {
-        $format_type = implode('|', array($toflowed, $quote));
+        $format_type = implode('|', [$toflowed, $quote]);
         if ($format_type == $this->_formattype) {
             return;
         }
 
-        $this->_output = array();
+        $this->_output = [];
         $this->_formattype = $format_type;
 
         /* Set variables used in regexps. */
@@ -233,10 +237,10 @@ class Horde_Text_Flowed
                  * next line has the same quote depth, add to the current
                  * line. A line is not flowed if it is a signature line. */
                 if ($line != '-- ') {
-                    while (!empty($line) &&
-                           (substr($line, -1) == ' ') &&
-                           ($text_count != $no) &&
-                           ($this->_numquotes($text[$no + 1]) == $num_quotes)) {
+                    while (!empty($line)
+                           && (substr($line, -1) == ' ')
+                           && ($text_count != $no)
+                           && ($this->_numquotes($text[$no + 1]) == $num_quotes)) {
                         /* If DelSp is yes and this is flowed input, we need to
                          * remove the trailing space. */
                         if (!$toflowed && $this->_delsp) {
@@ -264,12 +268,12 @@ class Horde_Text_Flowed
 
             if (empty($line)) {
                 /* Line is empty. */
-                $this->_output[] = array('text' => $quotestr, 'level' => $num_quotes);
-            } elseif ((!$wrap && !$num_quotes) ||
-                      empty($this->_maxlength) ||
-                      ((Horde_String::length($line, $this->_charset) + $num_quotes) <= $this->_maxlength)) {
+                $this->_output[] = ['text' => $quotestr, 'level' => $num_quotes];
+            } elseif ((!$wrap && !$num_quotes)
+                      || empty($this->_maxlength)
+                      || ((HordeString::length($line, $this->_charset) + $num_quotes) <= $this->_maxlength)) {
                 /* Line does not require rewrapping. */
-                $this->_output[] = array('text' => $quotestr . $this->_stuff($line, $num_quotes, $toflowed), 'level' => $num_quotes);
+                $this->_output[] = ['text' => $quotestr . $this->_stuff($line, $num_quotes, $toflowed), 'level' => $num_quotes];
             } else {
                 $min = $num_quotes + 1;
 
@@ -277,13 +281,13 @@ class Horde_Text_Flowed
                 while ($line) {
                     /* Stuff and re-quote the line. */
                     $line = $quotestr . $this->_stuff($line, $num_quotes, $toflowed);
-                    $line_length = Horde_String::length($line, $this->_charset);
+                    $line_length = HordeString::length($line, $this->_charset);
                     if ($line_length <= $this->_optlength) {
                         /* Remaining section of line is short enough. */
-                        $this->_output[] = array('text' => $line, 'level' => $num_quotes);
+                        $this->_output[] = ['text' => $line, 'level' => $num_quotes];
                         break;
                     } else {
-                        $regex = array();
+                        $regex = [];
                         if ($min <= $opt) {
                             $regex[] = '^(.{' . $min . ',' . $opt . '}) (.*)';
                         }
@@ -292,7 +296,7 @@ class Horde_Text_Flowed
                         }
                         $regex[] = '^(.{' . $min . ',})? (.*)';
 
-                        if ($m = Horde_String::regexMatch($line, $regex, $this->_charset)) {
+                        if ($m = HordeString::regexMatch($line, $regex, $this->_charset)) {
                             /* We need to wrap text at a certain number of
                              * *characters*, not a certain number of *bytes*;
                              * thus the need for a multibyte capable regex.
@@ -309,17 +313,17 @@ class Horde_Text_Flowed
                                 $m[1] = $m[2];
                                 $m[2] = '';
                             }
-                            $this->_output[] = array('text' => $m[1] . ' ' . (($delsp) ? ' ' : ''), 'level' => $num_quotes);
+                            $this->_output[] = ['text' => $m[1] . ' ' . (($delsp) ? ' ' : ''), 'level' => $num_quotes];
                             $line = $m[2];
                         } elseif ($line_length > 998) {
                             /* One excessively long word left on line.  Be
                              * absolutely sure it does not exceed 998
                              * characters in length or else we must
                              * truncate. */
-                            $this->_output[] = array('text' => Horde_String::substr($line, 0, 998, $this->_charset), 'level' => $num_quotes);
-                            $line = Horde_String::substr($line, 998, null, $this->_charset);
+                            $this->_output[] = ['text' => HordeString::substr($line, 0, 998, $this->_charset), 'level' => $num_quotes];
+                            $line = HordeString::substr($line, 998, null, $this->_charset);
                         } else {
-                            $this->_output[] = array('text' => $line, 'level' => $num_quotes);
+                            $this->_output[] = ['text' => $line, 'level' => $num_quotes];
                             break;
                         }
                     }
