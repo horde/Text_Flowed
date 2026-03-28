@@ -30,6 +30,7 @@ class TextFlowed
     protected int $maxlength = 78;
     protected int $optlength = 72;
     protected string $text;
+    /** @var list<FlowedLine> */
     protected array $output = [];
     protected ?string $formatType = null;
     protected string $charset;
@@ -83,7 +84,7 @@ class TextFlowed
         $this->reformat(false, $quote);
         $lines = count($this->output) - 1;
         foreach ($this->output as $no => $line) {
-            $txt .= $line['text'] . (($lines == $no) ? '' : "\n");
+            $txt .= $line->text . (($lines == $no) ? '' : "\n");
         }
 
         return $txt;
@@ -99,7 +100,7 @@ class TextFlowed
     public function toFixedArray(bool $quote = false): array
     {
         $this->reformat(false, $quote);
-        return $this->output;
+        return array_map(fn(FlowedLine $line) => $line->toArray(), $this->output);
     }
 
     /**
@@ -116,7 +117,7 @@ class TextFlowed
 
         $this->reformat(true, $quote, $wrap);
         foreach ($this->output as $line) {
-            $txt .= $line['text'] . "\n";
+            $txt .= $line->text . "\n";
         }
 
         return $txt;
@@ -226,14 +227,14 @@ class TextFlowed
 
             if (empty($line)) {
                 /* Line is empty. */
-                $this->output[] = ['text' => $quotestr, 'level' => $numQuotes];
+                $this->output[] = new FlowedLine($quotestr, $numQuotes);
             } elseif (
                 (!$wrap && !$numQuotes)
                 || empty($this->maxlength)
                 || ((HordeString::length($line, $this->charset) + $numQuotes) <= $this->maxlength)
             ) {
                 /* Line does not require rewrapping. */
-                $this->output[] = ['text' => $quotestr . $this->stuff($line, $numQuotes, $toflowed), 'level' => $numQuotes];
+                $this->output[] = new FlowedLine($quotestr . $this->stuff($line, $numQuotes, $toflowed), $numQuotes);
             } else {
                 $min = $numQuotes + 1;
 
@@ -244,7 +245,7 @@ class TextFlowed
                     $lineLength = HordeString::length($line, $this->charset);
                     if ($lineLength <= $this->optlength) {
                         /* Remaining section of line is short enough. */
-                        $this->output[] = ['text' => $line, 'level' => $numQuotes];
+                        $this->output[] = new FlowedLine($line, $numQuotes);
                         break;
                     } else {
                         $regex = [];
@@ -274,17 +275,17 @@ class TextFlowed
                                 $m[1] = $m[2];
                                 $m[2] = '';
                             }
-                            $this->output[] = ['text' => $m[1] . ' ' . (($delsp) ? ' ' : ''), 'level' => $numQuotes];
+                            $this->output[] = new FlowedLine($m[1] . ' ' . (($delsp) ? ' ' : ''), $numQuotes);
                             $line = $m[2];
                         } elseif ($lineLength > 998) {
                             /* One excessively long word left on line. Be
                              * absolutely sure it does not exceed 998
                              * characters in length or else we must
                              * truncate. */
-                            $this->output[] = ['text' => HordeString::substr($line, 0, 998, $this->charset), 'level' => $numQuotes];
+                            $this->output[] = new FlowedLine(HordeString::substr($line, 0, 998, $this->charset), $numQuotes);
                             $line = HordeString::substr($line, 998, null, $this->charset);
                         } else {
-                            $this->output[] = ['text' => $line, 'level' => $numQuotes];
+                            $this->output[] = new FlowedLine($line, $numQuotes);
                             break;
                         }
                     }

@@ -4,7 +4,7 @@ name: Text_Flowed
 full: Flowed text library
 description: |
   A library that provides common methods for manipulating text using the encoding described in RFC 3676 ('flowed' text).
-list: dev
+Blist: dev
 type: library
 homepage: https://www.horde.org/libraries/Horde_Text_Flowed
 authors:
@@ -37,4 +37,4 @@ autoload:
 
 quality:
   phpstan:
-    level: 9
+    level: 6
