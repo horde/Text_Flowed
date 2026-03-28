@@ -242,37 +242,37 @@ class QuoteModeTest extends TestCase
                 '>text',
                 "> text\n",
                 " >text\n",
-                'Single > without space'
+                'Single > without space',
             ],
             'space after >' => [
                 '> text',
                 "> text\n",
                 "> text\n",
-                'Single > with space'
+                'Single > with space',
             ],
             'double > no space' => [
                 '>>text',
                 ">> text\n",
                 " >>text\n",
-                'Double >> without space'
+                'Double >> without space',
             ],
             'double > with space' => [
                 '>> text',
                 ">> text\n",
                 ">> text\n",
-                'Double >> with space'
+                'Double >> with space',
             ],
             'mixed quote depths' => [
                 "> level1\n>> level2",
                 "> level1\n>> level2\n",
                 "> level1\n>> level2\n",
-                'Properly spaced mixed depths'
+                'Properly spaced mixed depths',
             ],
             'triple > no space' => [
                 '>>>text',
                 ">>> text\n",
                 " >>>text\n",
-                'Triple >>> without space'
+                'Triple >>> without space',
             ],
         ];
     }
