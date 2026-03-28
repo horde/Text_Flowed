@@ -1,5 +1,4 @@
 {
-    "minimum-stability": "dev",
     "name": "horde/text_flowed",
     "description": "Flowed text library",
     "type": "library",
@@ -12,24 +11,20 @@
             "role": "lead"
         }
     ],
-    "time": "2022-11-04",
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://horde-satis.maintaina.com"
-        }
-    ],
+    "time": "2026-03-28",
+    "repositories": [],
     "require": {
         "php": "^7.4 || ^8",
-        "horde/util": "^3 || dev-FRAMEWORK_6_0"
+        "horde/util": "^3"
     },
     "require-dev": {},
-    "suggest": {
-        "horde/test": "^3 || dev-FRAMEWORK_6_0"
-    },
+    "suggest": {},
     "autoload": {
         "psr-0": {
             "Horde_Text_Flowed": "lib/"
+        },
+        "psr-4": {
+            "Horde\\Text\\Flowed\\": "src/"
         }
     },
     "autoload-dev": {
@@ -38,8 +33,13 @@
         }
     },
     "config": {
-        "allow-plugins": {
-            "horde/horde-installer-plugin": true
+        "allow-plugins": {}
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "branch-alias": {
+            "dev-FRAMEWORK_6_0": "3.x-dev"
         }
     }
 }

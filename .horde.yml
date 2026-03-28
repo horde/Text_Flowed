@@ -28,6 +28,13 @@ dependencies:
     php: ^7.4 || ^8
     composer:
       horde/util: ^3
-  optional:
-    composer:
-      horde/test: ^3
+
+autoload:
+  psr-0:
+    Horde_Text_Flowed: lib/
+  psr-4:
+    Horde\Text\Flowed\: src/
+
+quality:
+  phpstan:
+    level: 9

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * Horde_Text_Flowed tests.
+ * Modern TextFlowed tests.
  *
  * @author     Michael Slusarz <slusarz@horde.org>
  * @category   Horde
@@ -14,48 +14,48 @@ declare(strict_types=1);
 
 namespace Horde\Text\Flowed\Test;
 
-use Horde_Text_Flowed;
+use Horde\Text\Flowed\TextFlowed;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-#[CoversClass(Horde_Text_Flowed::class)]
-class FlowedTest extends TestCase
+#[CoversClass(TextFlowed::class)]
+class TextFlowedTest extends TestCase
 {
-    public function testFixedToFlowed()
+    public function testFixedToFlowed(): void
     {
-        $flowed = new Horde_Text_Flowed("Hello, world!");
+        $flowed = new TextFlowed("Hello, world!");
         $this->assertEquals(
             "Hello, world!\n",
             $flowed->toFlowed()
         );
 
-        $flowed = new Horde_Text_Flowed("Hello, \nworld!");
+        $flowed = new TextFlowed("Hello, \nworld!");
         $this->assertEquals(
             "Hello,\nworld!\n",
             $flowed->toFlowed()
         );
 
-        $flowed = new Horde_Text_Flowed("Hello, \n world!");
+        $flowed = new TextFlowed("Hello, \n world!");
         $this->assertEquals(
             "Hello,\n  world!\n",
             $flowed->toFlowed()
         );
 
-        $flowed = new Horde_Text_Flowed("From");
+        $flowed = new TextFlowed("From");
         $this->assertEquals(
             " From\n",
             $flowed->toFlowed()
         );
 
         // See Bug #2969
-        $flowed = new Horde_Text_Flowed("   >--------------------------------------------------------------------------------------------------------------------------------");
+        $flowed = new TextFlowed("   >--------------------------------------------------------------------------------------------------------------------------------");
         $this->assertEquals(
             "    \n>-------------------------------------------------------------------------------------------------------------------------------- \n",
             $flowed->toFlowed()
         );
     }
 
-    public function testFlowedWrap()
+    public function testFlowedWrap(): void
     {
         $text = <<<EOT
             >this is a long line this is a long line this is a long line this is a long line this is a long line this is a long line
@@ -68,31 +68,30 @@ class FlowedTest extends TestCase
 
             EOT;
 
-        $flowed = new Horde_Text_Flowed($text);
+        $flowed = new TextFlowed($text);
         $flowed->setMaxLength(70);
         $this->assertEquals(
             $expected,
-            $flowed->toFlowed(false, ['nowrap' => true])
+            $flowed->toFlowed(false, false)
         );
-
     }
 
-    public function testFlowedToFixed()
+    public function testFlowedToFixed(): void
     {
-        $flowed = new Horde_Text_Flowed(">line 1 \n>line 2 \n>line 3");
+        $flowed = new TextFlowed(">line 1 \n>line 2 \n>line 3");
         $this->assertEquals(
             ">line 1 line 2 line 3",
             $flowed->toFixed()
         );
 
         // See Bug #4832
-        $flowed = new Horde_Text_Flowed("line 1\n>from line 2\nline 3");
+        $flowed = new TextFlowed("line 1\n>from line 2\nline 3");
         $this->assertEquals(
             "line 1\n>from line 2\nline 3",
             $flowed->toFixed()
         );
 
-        $flowed = new Horde_Text_Flowed("line 1\n From line 2\nline 3");
+        $flowed = new TextFlowed("line 1\n From line 2\nline 3");
         $this->assertEquals(
             "line 1\nFrom line 2\nline 3",
             $flowed->toFixed()
